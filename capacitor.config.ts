@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'starter-ionic',
+  appId: 'my.stars.app',
+  appName: 'Stars',
   webDir: 'dist',
   bundledWebRuntime: false
 };
