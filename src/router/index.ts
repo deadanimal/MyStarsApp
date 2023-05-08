@@ -2,32 +2,80 @@ import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
-  // DEFAULT LAYOUT
+  // // DEFAULT LAYOUT
+  // {
+  //   path: "",
+  //   redirect: "/login",
+  //   component: () => import("@/layouts/default.vue"),
+  //   children: [
+  //     {
+  //       path: "/home",
+  //       component: () => import("@/views/home.vue"),
+  //     },
+  //     {
+  //       path: "/about",
+  //       component: () => import("@/views/about.vue"),
+  //     },
+  //     {
+  //       path: "/dashboard",
+  //       component: () => import("@/views/dashboard.vue"),
+  //     },      
+  //   ],
+  // },
+
   {
-    path: "",
+    path: "/brand",
     redirect: "/login",
-    component: () => import("@/layouts/default.vue"),
+    component: () => import("@/layouts/brand.vue"),
     children: [
       {
-        path: "/home",
-        component: () => import("@/views/home.vue"),
-      },
+        path: "dashboard",
+        component: () => import("@/views/brand/dashboard.vue"),
+      }, 
       {
-        path: "/about",
-        component: () => import("@/views/about.vue"),
-      },
+        path: "briefs",
+        component: () => import("@/views/brand/briefs.vue"),
+      },    
+      {
+        path: "chat",
+        component: () => import("@/views/brand/chat.vue"),
+      },               
+      {
+        path: "profile",
+        component: () => import("@/views/brand/profile.vue"),
+      },           
     ],
-  },
+  },  
+
+  {
+    path: "/creator",
+    redirect: "/login",
+    component: () => import("@/layouts/creator.vue"),
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("@/views/creator/dashboard.vue"),
+      }, 
+      {
+        path: "explore",
+        component: () => import("@/views/creator/explore.vue"),
+      },    
+      {
+        path: "contents",
+        component: () => import("@/views/creator/contents.vue"),
+      },               
+      {
+        path: "profile",
+        component: () => import("@/views/creator/profile.vue"),
+      },           
+    ],
+  },  
 
   // BLANK LAYOUT
   {
     path: "",
     component: () => import("@/layouts/blank.vue"),
     children: [
-      {
-        path: "/blank",
-        component: () => import("@/views/blank.vue"),
-      },
       {
         path: "/login",
         component: () => import("@/views/login.vue"),
@@ -36,6 +84,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "/register",
         component: () => import("@/views/register.vue"),
       },
+      {
+        path: "/:username",
+        component: () => import("@/views/landing.vue"),
+      },      
     ],
   },
 

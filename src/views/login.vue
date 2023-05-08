@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts" name="LoginView">
-import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
+import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
 import { mailOutline, keyOutline } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import { useForm, useField } from 'vee-validate';
@@ -93,7 +93,7 @@ function onInvalidSubmit({ values, errors, results }: { values: any, errors: any
 
 const onSubmit = handleSubmit((values) => {
     console.log(values);
-    router.push('/home');
+    router.push('/creator/dashboard');
 }, onInvalidSubmit);
 
 </script>

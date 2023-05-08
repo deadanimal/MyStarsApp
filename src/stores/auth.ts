@@ -15,6 +15,7 @@ export const useAuthStore = defineStore({
         profileId: useStorage('profileId', ''),
         isAuthenticated: useStorage('isAuthenticated', false),
         userToken: useStorage('userToken', ''),
+        profileType: useStorage('profileType', 'creator'),
 
         name: useStorage('name', ''),
         username: useStorage('username', ''),
@@ -27,7 +28,7 @@ export const useAuthStore = defineStore({
 
             this.loading = true;
             try {
-                await axios.post("https://memoir.my/api/login", {
+                await axios.post("https://stars.my/api/login", {
                     email: email,
                     password: password,
                     device_name: '123'
@@ -70,16 +71,14 @@ export const useAuthStore = defineStore({
             this.loading = true
             try {
 
-                await axios.delete("https://memoir.my/api/logout", {
+                await axios.delete("https://stars.my/api/logout", {
                     headers: {
                         Authorization: 'Bearer ' + this.userToken
                     }
                 })
                     .then((response: any) => {
                         console.log(response)
-                        var responseJson = response.json()
-                        console.log(responseJson)
-                        if (responseJson['status'] == 'OK') {
+                        if (response['status'] == 'OK') {
 
                             localStorage.clear();
 
@@ -99,8 +98,6 @@ export const useAuthStore = defineStore({
                 this.error = error;
             } finally {
                 this.loading = false;
-
-
             }
         },
     }

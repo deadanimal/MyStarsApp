@@ -78,7 +78,7 @@ top-image {
 </style>
 
 <script setup lang="ts" name="RegisterView">
-import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
+import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
 import { mailOutline, keyOutline, peopleOutline } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import * as yup from 'yup';
