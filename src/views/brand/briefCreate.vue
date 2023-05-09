@@ -3,11 +3,10 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Brief</ion-title>
-                <ion-buttons slot="primary">                    
-                    <ion-button aria-label="Favorite" href="/brand/briefCreate">
-                        <ion-icon :icon="add" aria-hidden="true"></ion-icon>
-                        Create
+                <!-- <ion-title>Create Brief</ion-title> -->
+                <ion-buttons slot="start">
+                    <ion-button href="/brand/briefs">
+                        Back
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
@@ -39,20 +38,21 @@
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel,
     IonCol, IonGrid, IonRow, IonIcon,
-
+    IonBackButton
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useBriefStore } from "../../stores/brief";
-import { add
- } from 'ionicons/icons';
+import {
+    add
+} from 'ionicons/icons';
 
 export default defineComponent({
-    name: 'BrandBriefsView',
+    name: 'BrandBriefCreateView',
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
         IonCol, IonGrid, IonRow,
-        IonIcon
+        IonIcon, IonBackButton
     },
 
     data() {
@@ -63,10 +63,10 @@ export default defineComponent({
 
     setup() {
         const briefStore = useBriefStore();
-        return { 
+        return {
             briefStore,
             add
-         };
+        };
     },
 
     mounted() {

@@ -11,7 +11,6 @@ export const useAuthStore = defineStore({
         loading: false,
         error: null,
 
-        userId: useStorage('userId', ''),
         profileId: useStorage('profileId', ''),
         isAuthenticated: useStorage('isAuthenticated', false),
         userToken: useStorage('userToken', ''),
@@ -34,23 +33,26 @@ export const useAuthStore = defineStore({
                     device_name: '123'
                 }).then((response) => {
                     if (response['data']['token']) {
-                        console.log(response['data']['token']);
                         this.isAuthenticated = true;
-                        this.userId = response['data']['userId'];
                         this.profileId = response['data']['profileId'];
+                        this.profileType = response['data']['profileType'];
                         this.userToken = response['data']['token'];
 
                         this.name = response['data']['name'];
                         this.username = response['data']['username'];
                         this.email = response['data']['email'];
 
-                        console.log(router);
-                        router.push('/home');
+                        if(this.profileType == 'creator') {
+                            router.push('/creator/dashboard');
+                        } else {
+                            router.push('/brand/dashboard');
+                        }
+                        
                     } else {
                         console.log(response['data']['error']);
                         this.isAuthenticated = false;
-                        this.userId = '';
-                        this.profileId = ''
+                        this.profileId = '';
+                        this.profileType = '';
                         this.userToken = '';
 
                         this.name = '';
@@ -69,36 +71,39 @@ export const useAuthStore = defineStore({
 
         async logout() {
             this.loading = true
+            console.log(this.userToken);
             try {
+                const options = {
+                  method: "POST",
+                  url: "https://stars.my/api/logout",
+                  headers: {
+                    Authorization: "Bearer " + this.userToken,
+                  },
+                };
+        
+                await axios.request(options).then((response) => {
+                  console.log("Response: ", response);
+        
+                  if (response["data"]["status"] == "OK") {
+                    localStorage.clear();
+        
+                    this.isAuthenticated = false;
+                    this.profileId = "";
+                    this.userToken = "";
+        
+                    this.name = "";
+                    this.username = "";
+                    this.email = "";
 
-                await axios.delete("https://stars.my/api/logout", {
-                    headers: {
-                        Authorization: 'Bearer ' + this.userToken
-                    }
-                })
-                    .then((response: any) => {
-                        console.log(response)
-                        if (response['status'] == 'OK') {
-
-                            localStorage.clear();
-
-                            this.isAuthenticated = false;
-                            this.userId = '';
-                            this.profileId = ''
-                            this.userToken = '';
-
-                            this.name = '';
-                            this.username = '';
-                            this.email = '';
-
-                            router.push('/login');
-                        }
-                    })
-            } catch (error: any) {
+                    router.push("/login");
+                  }
+                });
+              } catch (error: any) {
+                console.log("Error: ", error);
                 this.error = error;
-            } finally {
-                this.loading = false;
-            }
+              } finally {
+                this.loading = false;        
+              }
         },
     }
 })

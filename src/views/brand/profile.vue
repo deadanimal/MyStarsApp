@@ -30,7 +30,16 @@
                             </ion-card-header>
 
                             <ion-card-content>
-                                
+                                profileId: {{ authStore.profileId }} <br/>
+                                profileType: {{ authStore.profileType }} <br/>
+                                isAuthenticated: {{ authStore.isAuthenticated }} <br/>
+                                userToken: {{ authStore.userToken }} <br/>
+                                                                
+                                name: {{ authStore.name }} <br/>
+                                username: {{ authStore.username }} <br/>
+                                email: {{ authStore.email }} <br/>
+
+                                <ion-button @click="authStore.logout()">Default</ion-button>
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -51,10 +60,12 @@
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
     IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
-    IonCol, IonGrid, IonRow
+    IonCol, IonGrid, IonRow,
+    IonButton
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
-//import { useChatStore } from "../stores/chat";
+
+import { useAuthStore } from "../../stores/auth";
 
 export default defineComponent({
     name: 'BrandProfileView',
@@ -62,7 +73,8 @@ export default defineComponent({
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle,
         IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
-        IonCol, IonGrid, IonRow
+        IonCol, IonGrid, IonRow,
+        IonButton
     },
 
     data() {
@@ -72,14 +84,12 @@ export default defineComponent({
     },
 
     setup() {
-        // const chatStore = useChatStore();
-        // return { chatStore };
+        const authStore = useAuthStore();
+        return { authStore };
     },
 
     mounted() {
-
         this.initialiseStorage();
-
     },
 
     methods: {

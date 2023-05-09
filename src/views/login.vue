@@ -57,16 +57,19 @@
 <script setup lang="ts" name="LoginView">
 import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
 import { mailOutline, keyOutline } from 'ionicons/icons';
-import { useRouter } from 'vue-router';
+//import { useRouter } from 'vue-router';
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
+import { useAuthStore } from '@/stores/auth';
 
 type Model = {
     email: string;
     password: string;
 }
 
-const router = useRouter();
+//const router = useRouter();
+
+const authStore = useAuthStore();
 
 const schema = yup.object({
     email: yup.string().required().email(),
@@ -77,7 +80,7 @@ const { handleSubmit } = useForm<Model>({
     validationSchema: schema,
     validateOnMount: false,
     initialValues: {
-        email: 'blabla@gmail.com',
+        email: 'email@stars.my',
         password: '12345678'
     }
 });
@@ -93,7 +96,13 @@ function onInvalidSubmit({ values, errors, results }: { values: any, errors: any
 
 const onSubmit = handleSubmit((values) => {
     console.log(values);
-    router.push('/creator/dashboard');
+    authStore.login(values.email, values.password).then((response)=> {
+        console.log(response)
+    }).catch((error)=> {
+        console.log(error)
+    }).then(()=> {
+        console.log('done')
+    })
 }, onInvalidSubmit);
 
 </script>

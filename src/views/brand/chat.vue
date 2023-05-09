@@ -3,7 +3,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Soph</ion-title>
+                <ion-title>Chat with Soph</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -22,7 +22,7 @@ import {
     
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
-//import { useChatStore } from "../stores/chat";
+import { useChatStore } from "../../stores/chat";
 
 export default defineComponent({
     name: 'BrandChatView',
@@ -40,8 +40,8 @@ export default defineComponent({
     },
 
     setup() {
-        // const chatStore = useChatStore();
-        // return { chatStore };
+        const chatStore = useChatStore();
+        return { chatStore };
     },
 
     mounted() {

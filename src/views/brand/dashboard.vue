@@ -42,8 +42,6 @@
                 </ion-row>
             </ion-grid>
 
-
-
         </ion-content>
     </ion-page>
 </template>
@@ -51,7 +49,7 @@
 <script lang="ts">
 
 import {
-    IonPage, IonHeader, IonToolbar, IonTitle,  IonContent,
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
     IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
     IonCol, IonGrid, IonRow
 } from '@ionic/vue';
@@ -73,15 +71,8 @@ export default defineComponent({
         }
     },
 
-    setup() {
-        // const chatStore = useChatStore();
-        // return { chatStore };
-    },
-
     mounted() {
-
         this.initialiseStorage();
-
     },
 
     methods: {
@@ -93,7 +84,6 @@ export default defineComponent({
         refreshView() {
             console.log('');
         },
-
 
     }
 });

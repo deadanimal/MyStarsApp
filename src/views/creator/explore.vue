@@ -3,7 +3,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Soph</ion-title>
+                <ion-title>Explore</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
