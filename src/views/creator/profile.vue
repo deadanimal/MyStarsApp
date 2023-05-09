@@ -39,7 +39,7 @@
                                 username: {{ authStore.username }} <br/>
                                 email: {{ authStore.email }} <br/>
 
-                                <ion-button @click="authStore.logout()">Default</ion-button>
+                                <ion-button @click="authStore.logout()">Log Out</ion-button>
 
                             </ion-card-content>
                         </ion-card>

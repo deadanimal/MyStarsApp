@@ -16,9 +16,18 @@
             <ion-grid :fixed="true">
                 <ion-row>
                     <ion-col>
+                        <ion-list>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-input label="Text input" placeholder="Enter text"></ion-input>
+                                </ion-item>
 
-                    </ion-col>
-                    <ion-col>
+                                <ion-item>
+                                    <ion-input label="Number input" type="number" placeholder="000"></ion-input>
+                                </ion-item>
+
+                            </ion-list>
+                        </ion-list>
 
                     </ion-col>
                 </ion-row>
@@ -37,8 +46,8 @@
 /* eslint-disable */
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel,
-    IonCol, IonGrid, IonRow, IonIcon,
-    IonBackButton
+    IonCol, IonGrid, IonRow, IonIcon, IonList,
+    IonBackButton, IonInput
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useBriefStore } from "../../stores/brief";
@@ -51,8 +60,7 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
-        IonCol, IonGrid, IonRow,
-        IonIcon, IonBackButton
+        IonCol, IonGrid, IonRow, IonList, IonIcon, IonBackButton, IonInput
     },
 
     data() {

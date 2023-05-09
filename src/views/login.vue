@@ -40,10 +40,10 @@
                                             type="submit">Login</ion-button>
                                     </form>
 
-                                    <div class="flex justify-center mt-5">
+                                    <!-- <div class="flex justify-center mt-5">
                                         <p class="text-sm">Belum punya akun? <a href="register">Daftar</a>s
                                         </p>
-                                    </div>
+                                    </div> -->
                                 </ion-card-content>
                             </ion-card>
                         </ion-col>

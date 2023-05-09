@@ -15,9 +15,12 @@ export const useBriefStore = defineStore({
     briefs: useStorage("briefs", []),
     brief: useStorage("brief", {}),
 
+    exploreBriefs: useStorage("exploreBriefs", []),
+
   }),
 
   actions: {
+    
     async listBriefs() {
       console.log("listBriefs");
 
@@ -92,5 +95,29 @@ export const useBriefStore = defineStore({
     async updateBrief(id: string) {
       console.log("updateBrief: ", id);
     },
+
+    async exploreBriefs() {
+        console.log('exploreBriefs');
+
+        try {
+            const options = {
+              method: "GET",
+              url: "https://stars.my/api/briefs/explore",
+              headers: {
+                Authorization: "Bearer " + authStore.userToken,
+              },
+            };
+    
+            await axios.request(options).then((response) => {
+              console.log("Response: ", response);              
+            });
+          } catch (error: any) {
+            console.log("Error: ", error);
+            this.error = error;
+          } finally {
+            this.loading = false;        
+          }        
+    }
+
   },
 });

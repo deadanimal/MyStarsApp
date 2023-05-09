@@ -3,7 +3,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Brief</ion-title>
+                <ion-title>Content</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
