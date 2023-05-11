@@ -19,11 +19,15 @@
                         <ion-list>
                             <ion-list>
                                 <ion-item>
-                                    <ion-input label="Text input" placeholder="Enter text"></ion-input>
+                                    <ion-input label="Title" placeholder="Enter the title of the brief"></ion-input>
                                 </ion-item>
 
                                 <ion-item>
-                                    <ion-input label="Number input" type="number" placeholder="000"></ion-input>
+                                    <ion-textarea label="Creative Direction" placeholder="Type something here"></ion-textarea>
+                                </ion-item>                                
+
+                                <ion-item>
+                                    <ion-input label="Budget" type="number" placeholder="000"></ion-input>
                                 </ion-item>
 
                             </ion-list>
@@ -47,7 +51,7 @@
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel,
     IonCol, IonGrid, IonRow, IonIcon, IonList,
-    IonBackButton, IonInput
+    IonBackButton, IonInput, IonTextarea
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useBriefStore } from "../../stores/brief";
@@ -60,7 +64,7 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
-        IonCol, IonGrid, IonRow, IonList, IonIcon, IonBackButton, IonInput
+        IonCol, IonGrid, IonRow, IonList, IonIcon, IonBackButton, IonInput, IonTextarea
     },
 
     data() {
